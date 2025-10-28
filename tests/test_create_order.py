@@ -16,8 +16,8 @@ BASE_URL = "https://qa-scooter.praktikum-services.ru/api/v1/orders"
 def test_create_order_with_different_colors(color):
     # Формируем тело запроса
     payload = {
-        "firstName": "Nikita",
-        "lastName": "Vlasov",
+        "firstName": "Nastya",
+        "lastName": "Vlasova",
         "address": "Konoha, 142 apt.",
         "metroStation": 4,
         "phone": "+7 800 351 31 31",
@@ -41,7 +41,7 @@ def test_create_order_with_different_colors(color):
     # Отмена заказа
     with allure.step("Отменяем созданный заказ"):
         track = data["track"]
-        cancel_response = requests.put(f"{BASE_URL}/cancel", json={"track": track})
+        cancel_response = requests.put(f"{BASE_URL}/orders/cancel", json={"track": track})
         # Если отмена не удалась — тест падает
         assert cancel_response.status_code in [200, 404], (
             f"Не удалось отменить заказ, статус: {cancel_response.status_code}, тело: {cancel_response.text}"
