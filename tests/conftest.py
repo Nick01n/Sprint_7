@@ -1,14 +1,8 @@
 import pytest
 import requests
-from tests.helpers import generate_random_string
+from utils.helpers import generate_random_string
+from utils.URL import BASE_URL
 
-BASE_URL = "https://qa-scooter.praktikum-services.ru/api/v1"
-
-
-@pytest.fixture
-def base_url():
-    
-    return BASE_URL
 
 
 @pytest.fixture
